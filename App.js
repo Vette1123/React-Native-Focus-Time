@@ -1,11 +1,26 @@
-import { StyleSheet, Platform, SafeAreaView, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  View,
+  Text,
+} from "react-native";
 import { colors } from "./src/utils/colors";
 import Focus from "./src/features/Focus";
+import { useState } from "react";
 
 export default function App() {
+  const [currentSubject, setCurrentSubject] = useState("");
   return (
     <SafeAreaView style={styles.container}>
-      <Focus />
+      {!currentSubject ? (
+        <Focus addSubject={setCurrentSubject} />
+      ) : (
+        <View>
+          <Text>iam going to do something for {currentSubject}</Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 }
